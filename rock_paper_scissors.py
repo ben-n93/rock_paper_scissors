@@ -2,7 +2,9 @@
 #4.10.21
 #ruthlesscattle
 
-#Imports choice function from random module
+#Imports time module and choice function from random module
+#I imported the time module as I wanted to introduce a slight delay with the gameplay loop 
+import time
 from random import choice
 
 #List of 'hand' shapes that user/computer can choose
@@ -10,22 +12,33 @@ shapes = ['rock','paper','scissors']
 
 #Prompt for user's choice of shape
 choice_prompt = "\nWhat are you going with? "
-choice_prompt += shapes[0].title() + "," + shapes[1].title() + " or " + shapes[2].title() + "? "
+choice_prompt += shapes[0].title() + ", " + shapes[1].title() + " or " + shapes[2].title() + "? "
+
+def rock_paper_scissors_callout():
+	"""Function that prints the 'players' calling out the name of the 'shapes'"""
+	print("\nHere we go...\n\nRock!")
+	time.sleep(1)
+	print("\nPaper!")
+	time.sleep(1)
+	print("\nScisssors!")
+	time.sleep(1)
+	print(f"\nComputer chose... {computer_choice.title()}!")
+	time.sleep(1)
 
 def win_scenarios():
 	"""Function that checks to see if user or computer wins game"""
 	if user_choice_input == 'rock' and computer_choice == 'paper':
-		print("You lose!\n")
+		print("\nPaper covers Rock... you lose!\n")
 	elif user_choice_input == 'paper' and computer_choice == 'rock':
-		print("You win!\n")
+		print("\nPaper covers Rock... you win!\n")
 	elif user_choice_input == 'rock' and computer_choice == 'scissors':
-		print("You win!\n")
-	elif user_choice_input == 'scissors' and computer_choice == 'rock':
-		print("You lose!\n")
+		print("\nRock crushes Scissors... you win!\n")
+	elif user_choice_input == 'Scissors' and computer_choice == 'rock':
+		print("\nRock crushes Scissors... you lose!!\n")
 	elif user_choice_input == 'paper' and computer_choice == 'scissors':
-		print("You lose!\n")
+		print("\nScissors cuts Paper... you lose!\n")
 	elif user_choice_input == 'scissors' and computer_choice == 'paper':
-		print("You win!\n")
+		print("\nScissors cuts Paper... you win!\n")
 
 #Main gamelay loop
 while True:
@@ -47,14 +60,12 @@ while True:
 			continue
 		#Checks to see if user's shape choice and computer's shape is the same, in which case it is a tie.
 		elif computer_choice == user_choice_input:
-			print("\nHere we go...\n\nRock!\nPaper!\nScissors!")
-			print(f"\nComputer chose... {computer_choice.title()}!")
+			rock_paper_scissors_callout()
 			print(f"\nIt's a tie! You both chose {user_choice_input.title()}!\n")
 			continue
 		#If user has input valid entries/data, gameplay function is called to see who wins the game.
 		else:
-			print("\nHere we go...\nRock!\nPaper\nScissors!\n")
-			print(f"Computer chose... {computer_choice.title()}!\n")
+			rock_paper_scissors_callout()
 			win_scenarios()
 			#After game, restarts while loop to see if user wants to continue playing.
 			continue
