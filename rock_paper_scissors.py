@@ -1,6 +1,6 @@
 #Rock, paper, scisscors game
 #4.10.21
-#ruthlesscattle
+#ben-n93
 
 #Imports time module and choice function from random module
 #I imported the time module as I wanted to introduce a slight delay with the gameplay loop 
