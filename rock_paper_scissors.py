@@ -3,8 +3,8 @@ from random import choice
 
 SHAPES = ['rock', 'paper', 'scissors']
 CHOICE_PROMPT = "\nWhat are you going with? "
-CHOICE_PROMPT += shapes[0].title() + ", " + shapes[1].title() + " or "
-CHOICE_PROMPT += shapes[2].title() + "? "
+CHOICE_PROMPT += SHAPES[0].title() + ", " + SHAPES[1].title() + " or "
+CHOICE_PROMPT += SHAPES[2].title() + "? "
 
 
 def rock_paper_scissors_callout():
@@ -28,7 +28,7 @@ def win_scenarios():
         print("\nPaper covers Rock... you win!\n")
     elif user_choice_input == 'rock' and computer_choice == 'scissors':
         print("\nRock crushes Scissors... you win!\n")
-    elif user_choice_input == 'Scissors' and computer_choice == 'rock':
+    elif user_choice_input == 'scissors' and computer_choice == 'rock':
         print("\nRock crushes Scissors... you lose!!\n")
     elif user_choice_input == 'paper' and computer_choice == 'scissors':
         print("\nScissors cuts Paper... you lose!\n")
@@ -45,7 +45,7 @@ while True:
         user_choice_input = input(CHOICE_PROMPT)
         user_choice_input = user_choice_input.lower()
         user_choice_input = user_choice_input.strip()
-        if user_choice_input not in shapes:
+        if user_choice_input not in SHAPES:
             print("That is not a valid entry!")
             continue
         elif computer_choice == user_choice_input:
@@ -54,7 +54,7 @@ while True:
             continue
         else:
             rock_paper_scissors_callout()
-            win_scenarios().
+            win_scenarios()
             continue
     elif new_game in ('n', 'no', 'q', 'quit'):
         break
