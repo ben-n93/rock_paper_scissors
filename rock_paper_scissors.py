@@ -1,11 +1,10 @@
 import time
 from random import choice
 
-shapes = ['rock', 'paper', 'scissors']
-
-choice_prompt = "\nWhat are you going with? "
-choice_prompt += shapes[0].title() + ", " + shapes[1].title() + " or "
-choice_prompt += shapes[2].title() + "? "
+SHAPES = ['rock', 'paper', 'scissors']
+CHOICE_PROMPT = "\nWhat are you going with? "
+CHOICE_PROMPT += shapes[0].title() + ", " + shapes[1].title() + " or "
+CHOICE_PROMPT += shapes[2].title() + "? "
 
 
 def rock_paper_scissors_callout():
@@ -38,16 +37,12 @@ def win_scenarios():
 
 
 while True:
-    computer_choice = choice(shapes)
+    computer_choice = choice(SHAPES)
     new_game = input("Do you want to play Rock Paper Scissors? (yes/no) ")
-    # Converts user's input to lowercase, in case of choice capitlisation.
-    # Also strips any accidental whitespace.
     new_game = new_game.lower()
     new_game = new_game.strip()
-    if new_game == 'y' or new_game == 'yes':
-        user_choice_input = input(choice_prompt)
-        # Converts user's input to lowercase, in case of choice capitlisation.
-        # Also strips any accidental whitespace.
+    if new_game in ('y', 'yes'):
+        user_choice_input = input(CHOICE_PROMPT)
         user_choice_input = user_choice_input.lower()
         user_choice_input = user_choice_input.strip()
         if user_choice_input not in shapes:
@@ -57,17 +52,11 @@ while True:
             rock_paper_scissors_callout()
             print(f"\nTie! You both chose {user_choice_input.title()}!\n")
             continue
-        # If user has input valid entries/data, gameplay function is called
-        # to see who wins the game.
         else:
             rock_paper_scissors_callout()
-            win_scenarios()
-            # After game, restarts while loop to see if user wants to continue
-            # playing.
+            win_scenarios().
             continue
-    elif new_game == 'n' or new_game == 'no':
-        break
-    elif new_game == 'q' or new_game == 'quit':
+    elif new_game in ('n', 'no', 'q', 'quit'):
         break
     else:
         print("That is not a valid answer.")
